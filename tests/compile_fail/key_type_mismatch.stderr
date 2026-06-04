@@ -42,8 +42,6 @@ error[E0308]: mismatched types
    | |                     |
    | |                     expected `usize`, found `bool`
    | arguments to this function are incorrect
- 5 | fn f(a: bool) -> bool {
-   |                  ---- this return type influences the call expression's return type
    |
 note: method defined here
   --> src/lib.rs
