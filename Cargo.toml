@@ -48,6 +48,6 @@ sd = { version = "0.7.6", locked = true }
 
 [features]
 
-# [[test]]
-# name =  "compile_fail"
-# harness = false
+[[test]]
+name =  "compile_fail"
+harness = false
