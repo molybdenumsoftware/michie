@@ -72,7 +72,7 @@ fn on_a_fn_in_a_trait_impl_block() {
 #[test]
 fn errors() {
     let config = ui_test::Config::rustc("tests/compile_fail");
-    ui_test::run_tests();
+    ui_test::run_tests(config).unwrap();
 }
 
 #[test]
