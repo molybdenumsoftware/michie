@@ -19,7 +19,7 @@ error[E0283]: type annotations needed
           - impl<I, R> MemoizationStore<I, R> for BTreeMap<I, R>
             where I: Ord, R: Clone;
           - impl<I, R> MemoizationStore<I, R> for HashMap<I, R>
-            where I: Eq, I: Hash, R: Clone;
+            where I: std::cmp::Eq, I: Hash, R: Clone;
 note: required by a bound in `inference_hint`
  --> tests/compile_fail/failure_to_infer_store_type.rs:3:1
   |
@@ -37,5 +37,5 @@ error[E0283]: type annotations needed
           - impl<I, R> MemoizationStore<I, R> for BTreeMap<I, R>
             where I: Ord, R: Clone;
           - impl<I, R> MemoizationStore<I, R> for HashMap<I, R>
-            where I: Eq, I: Hash, R: Clone;
+            where I: std::cmp::Eq, I: Hash, R: Clone;
   = note: this error originates in the attribute macro `memoized` (in Nightly builds, run with -Z macro-backtrace for more info)
