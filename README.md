@@ -2,7 +2,7 @@
 [![License](https://img.shields.io/crates/l/michie)][license]
 ![Downloads](https://img.shields.io/crates/d/michie)
 ![Recent downloads](https://img.shields.io/crates/dr/michie)
-[![CI status](https://img.shields.io/github/actions/workflow/status/mobusoperandi/michie/ci.yml?branch=master)][ci]
+[![CI status](https://img.shields.io/github/actions/workflow/status/molybdenumsoftware/michie/ci.yml?branch=master)][ci]
 
 michie (sounds like Mickey) — an attribute macro that adds [memoization] to a function.
 
@@ -208,6 +208,6 @@ In [the GitHub Discussions].
 [compile-time evaluation]: https://doc.rust-lang.org/std/keyword.const.html#compile-time-evaluable-functions
 [memoization]: https://en.wikipedia.org/wiki/Memoization
 [crates.io]: https://crates.io/crates/michie
-[ci]: https://github.com/mobusoperandi/michie/actions/workflows/ci.yml
+[ci]: https://github.com/molybdenumsoftware/michie/actions/workflows/ci.yml
 [license]: https://tldrlegal.com/license/mit-license
-[the GitHub Discussions]: https://github.com/mobusoperandi/michie/discussions
+[the GitHub Discussions]: https://github.com/molybdenumsoftware/michie/discussions

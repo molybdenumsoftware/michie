@@ -3,7 +3,7 @@ name = "michie"
 version = "3.0.2"
 edition = "2021"
 description = "An attribute macro that adds memoization to a function (sounds like Mickey)"
-repository = "https://github.com/mobusoperandi/michie"
+repository = "https://github.com/molybdenumsoftware/michie"
 license = "MIT"
 keywords = [
     "memoization",
