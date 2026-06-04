@@ -47,3 +47,7 @@ markdown-toc = { version = "0.2.0", locked = true, bins = ["md-toc"] }
 sd = { version = "0.7.6", locked = true }
 
 [features]
+
+# [[test]]
+# name =  "compile_fail"
+# harness = false
