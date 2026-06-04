@@ -71,8 +71,8 @@ fn on_a_fn_in_a_trait_impl_block() {
 
 #[test]
 fn errors() {
-    let t = trybuild::TestCases::new();
-    t.compile_fail("tests/compile_fail/*.rs");
+    let config = ui_test::Config::rustc("tests/compile_fail");
+    ui_test::run_tests();
 }
 
 #[test]
