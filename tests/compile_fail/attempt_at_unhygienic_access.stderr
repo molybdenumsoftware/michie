@@ -3,3 +3,10 @@ error[E0425]: cannot find value `key` in this scope
   |
 6 |     key
   |     ^^^ not found in this scope
+  |
+help: an identifier with the same name is defined here, but is not accessible due to macro hygiene
+ --> tests/compile_fail/attempt_at_unhygienic_access.rs:4:23
+  |
+4 | #[memoized(key_expr = a, store_type = HashMap<bool, bool>)]
+  |                       ^
+  = note: this error originates in the attribute macro `memoized` (in Nightly builds, run with -Z macro-backtrace for more info)
