@@ -1,0 +1,3 @@
+export CARGO_INSTALL_ROOT=.cargo-install-root
+PATH_add .cargo-install-root/bin
+use nix -p rustup
