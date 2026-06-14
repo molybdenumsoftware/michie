@@ -31,7 +31,7 @@ fn limited_character_set_in_headings() {
         })
         .for_each(|spans| {
             assert_eq!(spans.len(), 1);
-            let span = spans.get(0).unwrap();
+            let span = spans.first().unwrap();
             let text = match span {
                 markdown::Span::Text(text) => text,
                 _ => panic!("heading contains something other than plain text"),
