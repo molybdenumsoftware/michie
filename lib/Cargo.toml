@@ -17,7 +17,7 @@ include = [
 michie-macro = { path = "../macro", version = "3.0.2" }
 
 [dev-dependencies]
-cargo_toml = "0.15.2"
+cargo_toml = "0.22.3"
 itertools = "0.14.0"
 jql = "7.0.0"
 markdown = "0.3.0"
