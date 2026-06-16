@@ -7,14 +7,14 @@ CARGO_TERM_COLOR = "always"
 [tasks.pre-commit]
 run_task = { name = ["test", "clippy", "doc", "check_fmt"], parallel = true }
 
-[tasks.ci_main]
+[tasks.ci_checks_main]
 run_task = { name = ["test", "clippy", "doc", "check_fmt"], parallel = true }
 
-[tasks.ci_post]
-run_task = { name = ["no_untracked", "no_modified", "release"] }
+[tasks.ci_checks_post]
+run_task = { name = ["no_untracked", "no_modified"] }
 
-[tasks.ci]
-run_task = { name = ["ci_main", "ci_post"] }
+[tasks.ci_checks]
+run_task = { name = ["ci_checks_main", "ci_checks_post"] }
 
 [tasks.test]
 command = "cargo"
@@ -66,19 +66,4 @@ if [[ `git ls-files --exclude-standard --others` ]]; then
   echo "untracked files detected"
   exit 1
 fi
-'''
-
-[tasks.release]
-condition = { env = { "GITHUB_REF_TYPE" = "branch", "GITHUB_REF_NAME" = "master" } }
-script = '''
-#!/usr/bin/env bash
-set -euxo pipefail
-npm install --global \
-    semantic-release@19 \
-    @semantic-release-cargo/semantic-release-cargo@2 \
-    @semantic-release/changelog@6 \
-    @semantic-release/git@10 \
-    conventional-changelog-conventionalcommits@5
-
-semantic-release
 '''
