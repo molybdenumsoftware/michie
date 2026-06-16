@@ -1,5 +1,11 @@
-[package]
-name = "michie"
+[workspace]
+resolver = "2"
+members = [
+    "lib",
+    "macro",
+]
+
+[workspace.package]
 version = "3.0.2"
 edition = "2021"
 description = "An attribute macro that adds memoization to a function (sounds like Mickey)"
@@ -15,35 +21,10 @@ keywords = [
 categories = [
     "caching",
 ]
-include = [
-    "/README.md",
-    "/src/**/*.rs",
-    "/tests/**/*.rs",
-    "/tests/compile_fail/*.stderr"
-]
 
-[workspace]
-members = [
-    "macro"
-]
-
-[dependencies]
-michie-macro = { path = "macro", version = "3.0.2" }
-
-[dev-dependencies]
-cargo_toml = "0.15.2"
-itertools = "0.10.3"
-jql = "5.1.1"
-markdown = "0.3.0"
-regex = "1.5.5"
-semver = "1.0.9"
-trybuild = "1.0.56"
-
-[package.metadata.bin]
+[workspace.metadata.bin]
 cargo-binstall = { version = "1.2.1", locked = true }
 cargo-make = { version = "0.37.24", locked = true, bins = ["makers"] }
 conventional_commits_linter = { version = "0.12.3", locked = true }
 markdown-toc = { version = "0.2.0", locked = true, bins = ["md-toc"] }
 sd = { version = "0.7.6", locked = true }
-
-[features]
