@@ -8,7 +8,7 @@ concurrency:
 
 jobs:
   test:
-    uses: ./.github/workflows/test.yml
+    uses: ./.github/workflows/checks.yml
 
   publish:
     needs: test
