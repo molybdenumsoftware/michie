@@ -1,0 +1,29 @@
+[package]
+name = "michie"
+version.workspace = true
+edition.workspace = true
+description.workspace = true
+repository.workspace = true
+license.workspace = true
+keywords.workspace = true
+categories.workspace = true
+include = [
+    "/src/**/*.rs",
+    "/tests/**/*.rs",
+    "/tests/compile_fail/*.stderr"
+]
+
+[dependencies]
+michie-macro = { path = "../macro", version = "3.0.2" }
+
+[dev-dependencies]
+cargo_toml = "0.15.2"
+itertools = "0.10.3"
+jql = "5.1.1"
+markdown = "0.3.0"
+regex = "1.5.5"
+semver = "1.0.9"
+trybuild = "1.0.56"
+
+[features]
+
