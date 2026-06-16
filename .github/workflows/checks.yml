@@ -1,15 +1,16 @@
 on:
   push: {}
   pull_request: {}
+  workflow_call:
 
 jobs:
-  cargo-make-ci:
+  checks:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # for commit linting and semantic-release
+          fetch-depth: 0 # for commit linting
           persist-credentials: false
       - uses: webiny/action-conventional-commits@v1.1.0
       - uses: actions/cache@v3
@@ -24,12 +25,4 @@ jobs:
             ${{ runner.os }}_cargo-run-bin_
             ${{ runner.os }}_
       - run: cargo install cargo-run-bin
-      - uses: actions/create-github-app-token@v3
-        id: get-token
-        with:
-          client-id: ${{ vars.TOKEN_PROVIDER_APP_CLIENT_ID }}
-          private-key: ${{ secrets.TOKEN_PROVIDER_APP_PRIVATE_KEY }}
-      - run: cargo bin makers ci
-        env:
-          GITHUB_TOKEN: ${{ steps.get-token.outputs.token }}
-          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      - run: cargo bin makers ci_checks

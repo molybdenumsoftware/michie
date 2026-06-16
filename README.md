@@ -208,6 +208,6 @@ In [the GitHub Discussions].
 [compile-time evaluation]: https://doc.rust-lang.org/std/keyword.const.html#compile-time-evaluable-functions
 [memoization]: https://en.wikipedia.org/wiki/Memoization
 [crates.io]: https://crates.io/crates/michie
-[ci]: https://github.com/molybdenumsoftware/michie/actions/workflows/ci.yml
+[ci]: https://github.com/molybdenumsoftware/michie/actions/workflows/checks.yml
 [license]: https://tldrlegal.com/license/mit-license
 [the GitHub Discussions]: https://github.com/molybdenumsoftware/michie/discussions
