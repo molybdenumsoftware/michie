@@ -18,7 +18,7 @@ michie-macro = { path = "../macro", version = "3.0.2" }
 
 [dev-dependencies]
 cargo_toml = "0.22.3"
-itertools = "0.14.0"
+itertools = "0.15.0"
 jql = "8.0.2"
 markdown = "1.0.0"
 regex = "1.5.5"
