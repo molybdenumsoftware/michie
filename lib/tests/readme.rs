@@ -1,10 +1,16 @@
-use markdown::{tokenize, Block};
+use markdown::{
+    mdast::{Node, Text},
+    to_mdast,
+};
 use regex::Regex;
-use std::{fs::read_to_string, path::Path};
+use std::{
+    fs::read_to_string,
+    path::{Path, PathBuf},
+};
 
 #[test]
 fn ci_badge() {
-    let readme = read_to_string("README.md").unwrap();
+    let readme = read_to_string(PathBuf::from_iter(["..", "README.md"])).unwrap();
     let regex = Regex::new("(?m)/actions/workflows/(.*?)(?:/|$)").unwrap();
     let filename = regex
         .captures_iter(&readme)
@@ -14,33 +20,33 @@ fn ci_badge() {
             prev
         })
         .expect("at least one match");
-    let path = format!(".github/workflows/{filename}");
+    let path = PathBuf::from_iter(["..", ".github", "workflows", filename]);
     assert!(Path::new(&path).exists());
 }
 
 #[test]
 // because markdown_toc does the wrong thing with some characters when generating links
 fn limited_character_set_in_headings() {
-    let readme = read_to_string("README.md").unwrap();
-    let tokens = tokenize(&readme);
-    tokens
-        .into_iter()
-        .filter_map(|block| match block {
-            Block::Header(spans, _) => Some(spans),
+    let readme = read_to_string(PathBuf::from_iter(["..", "README.md"])).unwrap();
+    let ast = to_mdast(&readme, &Default::default()).unwrap();
+    ast.children()
+        .unwrap()
+        .iter()
+        .filter_map(|node| match node {
+            Node::Heading(heading) => Some(heading),
             _ => None,
         })
-        .for_each(|spans| {
-            assert_eq!(spans.len(), 1);
-            let span = spans.first().unwrap();
-            let text = match span {
-                markdown::Span::Text(text) => text,
-                _ => panic!("heading contains something other than plain text"),
+        .for_each(|heading| {
+            let [Node::Text(Text { value, .. })] = heading.children.as_slice() else {
+                panic!("heading should be one text node but is: {heading:?}");
             };
+
             assert!(
-                text.chars()
+                value
+                    .chars()
                     .all(|c| c.is_alphanumeric() || c == ' ' || c == '_' || c == '-'),
                 "{}",
-                text
+                value
             );
         });
 }
