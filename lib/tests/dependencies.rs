@@ -3,7 +3,7 @@ use semver::VersionReq;
 
 #[test]
 fn all_dev_deps_are_caret_constrained() {
-    let manifest = Manifest::from_path("Cargo.toml").unwrap();
+    let manifest = Manifest::from_path(env!("CARGO_MANIFEST_PATH")).unwrap();
     let all_are_caret = manifest
         .dev_dependencies
         .into_values()
