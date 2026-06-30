@@ -1,6 +1,6 @@
 use michie::memoized;
-use std::cell::Cell;
 use std::collections::BTreeMap;
+use std::sync::MutexGuard;
 
 fn generic_in_impl() {
     #[memoized(key_expr = input, store_type = BTreeMap<MutexGuard<'_, ()>, ()>)]

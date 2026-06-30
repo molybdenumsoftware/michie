@@ -14,13 +14,7 @@ note: required because it appears within the type `NotSync`
    = note: required for `alloc::collections::btree::node::NodeRef<alloc::collections::btree::node::marker::Owned, NotSync, (), alloc::collections::btree::node::marker::LeafOrInternal>` to implement `Sync`
 note: required because it appears within the type `Option<alloc::collections::btree::node::NodeRef<alloc::collections::btree::node::marker::Owned, NotSync, (), alloc::collections::btree::node::marker::LeafOrInternal>>`
   --> $RUST/core/src/option.rs
-   |
-   | pub enum Option<T> {
-   |          ^^^^^^
 note: required because it appears within the type `BTreeMap<NotSync, ()>`
   --> $RUST/alloc/src/collections/btree/map.rs
-   |
-   | pub struct BTreeMap<
-   |            ^^^^^^^^
    = note: required for the cast from `Box<BTreeMap<NotSync, ()>>` to `Box<(dyn Any + Send + Sync + 'static)>`
    = note: this error originates in the attribute macro `memoized` (in Nightly builds, run with -Z macro-backtrace for more info)
