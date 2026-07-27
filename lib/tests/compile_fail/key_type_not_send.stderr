@@ -1,0 +1,25 @@
+error[E0277]: `std::sync::MutexGuard<'static, ()>` cannot be sent between threads safely
+  --> tests/compile_fail/key_type_not_send.rs:28:5
+   |
+28 |     #[memoized(key_expr = input, store_type = BTreeMap<NotSend, ()>)]
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::sync::MutexGuard<'static, ()>` cannot be sent between threads safely
+   |
+   = help: within `NotSend`, the trait `Send` is not implemented for `std::sync::MutexGuard<'static, ()>`
+note: required because it appears within the type `NotSend`
+  --> tests/compile_fail/key_type_not_send.rs:5:8
+   |
+ 5 | struct NotSend(MutexGuard<'static, ()>);
+   |        ^^^^^^^
+   = note: required for `alloc::collections::btree::node::NodeRef<alloc::collections::btree::node::marker::Owned, NotSend, (), alloc::collections::btree::node::marker::LeafOrInternal>` to implement `Send`
+note: required because it appears within the type `Option<alloc::collections::btree::node::NodeRef<alloc::collections::btree::node::marker::Owned, NotSend, (), alloc::collections::btree::node::marker::LeafOrInternal>>`
+  --> $RUST/core/src/option.rs
+   |
+   | pub enum Option<T> {
+   |          ^^^^^^
+note: required because it appears within the type `BTreeMap<NotSend, ()>`
+  --> $RUST/alloc/src/collections/btree/map.rs
+   |
+   | pub struct BTreeMap<
+   |            ^^^^^^^^
+   = note: required for the cast from `Box<BTreeMap<NotSend, ()>>` to `Box<(dyn Any + Send + Sync + 'static)>`
+   = note: this error originates in the attribute macro `memoized` (in Nightly builds, run with -Z macro-backtrace for more info)
