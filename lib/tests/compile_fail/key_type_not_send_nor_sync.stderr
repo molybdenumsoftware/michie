@@ -11,6 +11,9 @@ note: required because it appears within the type `hashbrown::map::HashMap<Rc<()
  --> /rust/deps/hashbrown-0.16.1/src/map.rs:185:11
 note: required because it appears within the type `HashMap<Rc<()>, ()>`
  --> $RUST/std/src/collections/hash/map.rs
+  |
+  | pub struct HashMap<
+  |            ^^^^^^^
   = note: required for the cast from `Box<HashMap<Rc<()>, ()>>` to `Box<(dyn Any + Send + Sync + 'static)>`
   = note: this error originates in the attribute macro `memoized` (in Nightly builds, run with -Z macro-backtrace for more info)
 
@@ -27,5 +30,8 @@ note: required because it appears within the type `hashbrown::map::HashMap<Rc<()
  --> /rust/deps/hashbrown-0.16.1/src/map.rs:185:11
 note: required because it appears within the type `HashMap<Rc<()>, ()>`
  --> $RUST/std/src/collections/hash/map.rs
+  |
+  | pub struct HashMap<
+  |            ^^^^^^^
   = note: required for the cast from `Box<HashMap<Rc<()>, ()>>` to `Box<(dyn Any + Send + Sync + 'static)>`
   = note: this error originates in the attribute macro `memoized` (in Nightly builds, run with -Z macro-backtrace for more info)
