@@ -13,16 +13,9 @@ jobs:
           fetch-depth: 0 # for commit linting
           persist-credentials: false
       - uses: webiny/action-conventional-commits@v1.4.2
-      - uses: actions/cache@v6
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
-          path: |
+          cache-directories: |
             .bin/
-            target/
-            ~/.cargo/
-          # cargo-run-bin refers to the following step
-          key: ${{ runner.os }}_cargo-run-bin_${{ hashFiles('Cargo.toml', 'Cargo.lock') }}
-          restore-keys: |
-            ${{ runner.os }}_cargo-run-bin_
-            ${{ runner.os }}_
       - run: cargo install cargo-run-bin
       - run: cargo bin makers ci_checks
