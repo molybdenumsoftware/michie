@@ -7,10 +7,10 @@ error[E0277]: `Cell<()>` cannot be shared between threads safely
    = help: within `NotSync`, the trait `Sync` is not implemented for `Cell<()>`
    = note: if you want to do aliasing and mutation between multiple threads, use `std::sync::RwLock`
 note: required because it appears within the type `NotSync`
-  --> tests/compile_fail/key_type_not_sync.rs:5:8
+  --> tests/compile_fail/key_type_not_sync.rs:5:16
    |
  5 | struct NotSync(Cell<()>);
-   |        ^^^^^^^
+   |                ^^^^^^^^ required by this field
    = note: required for `alloc::collections::btree::node::NodeRef<alloc::collections::btree::node::marker::Owned, NotSync, (), alloc::collections::btree::node::marker::LeafOrInternal>` to implement `Sync`
 note: required because it appears within the type `Option<alloc::collections::btree::node::NodeRef<alloc::collections::btree::node::marker::Owned, NotSync, (), alloc::collections::btree::node::marker::LeafOrInternal>>`
   --> $RUST/core/src/option.rs

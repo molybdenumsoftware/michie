@@ -6,10 +6,10 @@ error[E0277]: `std::sync::MutexGuard<'static, ()>` cannot be sent between thread
    |
    = help: within `NotSend`, the trait `Send` is not implemented for `std::sync::MutexGuard<'static, ()>`
 note: required because it appears within the type `NotSend`
-  --> tests/compile_fail/key_type_not_send.rs:5:8
+  --> tests/compile_fail/key_type_not_send.rs:5:16
    |
  5 | struct NotSend(MutexGuard<'static, ()>);
-   |        ^^^^^^^
+   |                ^^^^^^^^^^^^^^^^^^^^^^^ required by this field
    = note: required for `alloc::collections::btree::node::NodeRef<alloc::collections::btree::node::marker::Owned, NotSend, (), alloc::collections::btree::node::marker::LeafOrInternal>` to implement `Send`
 note: required because it appears within the type `Option<alloc::collections::btree::node::NodeRef<alloc::collections::btree::node::marker::Owned, NotSend, (), alloc::collections::btree::node::marker::LeafOrInternal>>`
   --> $RUST/core/src/option.rs
